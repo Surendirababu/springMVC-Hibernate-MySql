@@ -1,17 +1,12 @@
-package com.websystique.springmvc.model;
+package com.suren.springmvc.model;
  
 import java.math.BigDecimal;
- 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
- 
+
 import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.joda.time.LocalDate;
@@ -28,6 +23,11 @@ public class Employee {
     @Size(min=3, max=50)
     @Column(name = "NAME", nullable = false)
     private String name;
+
+    @NotNull
+    @Column(name = "VERSION", nullable = false)
+    @Version
+    private int version;
  
     @NotNull
     @DateTimeFormat(pattern="dd/MM/yyyy") 
@@ -51,7 +51,15 @@ public class Employee {
     public void setId(int id) {
         this.id = id;
     }
- 
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
+    }
+
     public String getName() {
         return name;
     }
@@ -83,39 +91,43 @@ public class Employee {
     public void setSsn(String ssn) {
         this.ssn = ssn;
     }
- 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Employee employee = (Employee) o;
+
+        if (id != employee.id) return false;
+        if (version != employee.version) return false;
+        if (name != null ? !name.equals(employee.name) : employee.name != null) return false;
+        if (joiningDate != null ? !joiningDate.equals(employee.joiningDate) : employee.joiningDate != null)
+            return false;
+        if (salary != null ? !salary.equals(employee.salary) : employee.salary != null) return false;
+        return ssn != null ? ssn.equals(employee.ssn) : employee.ssn == null;
+    }
+
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + id;
-        result = prime * result + ((ssn == null) ? 0 : ssn.hashCode());
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + version;
+        result = 31 * result + (joiningDate != null ? joiningDate.hashCode() : 0);
+        result = 31 * result + (salary != null ? salary.hashCode() : 0);
+        result = 31 * result + (ssn != null ? ssn.hashCode() : 0);
         return result;
     }
- 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (!(obj instanceof Employee))
-            return false;
-        Employee other = (Employee) obj;
-        if (id != other.id)
-            return false;
-        if (ssn == null) {
-            if (other.ssn != null)
-                return false;
-        } else if (!ssn.equals(other.ssn))
-            return false;
-        return true;
-    }
- 
+
     @Override
     public String toString() {
-        return "Employee [id=" + id + ", name=" + name + ", joiningDate="
-                + joiningDate + ", salary=" + salary + ", ssn=" + ssn + "]";
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", version=" + version +
+                ", joiningDate=" + joiningDate +
+                ", salary=" + salary +
+                ", ssn='" + ssn + '\'' +
+                '}';
     }
-     
 }

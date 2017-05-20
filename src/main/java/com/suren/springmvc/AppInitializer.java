@@ -1,6 +1,6 @@
-package com.websystique.springmvc;
+package com.suren.springmvc;
  
-import com.websystique.springmvc.configuration.AppConfig;
+import com.suren.springmvc.configuration.AppConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
  
 public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {

@@ -24,6 +24,7 @@
 
     <form:form method="POST" modelAttribute="employee">
         <form:input type="hidden" path="id" id="id"/>
+        <form:input type="hidden" path="version" id="version"/>
         <table>
             <tr>
                 <td><label for="name">Name: </label> </td>

@@ -1,9 +1,9 @@
-package com.websystique.springmvc.dao;
+package com.suren.springmvc.dao;
  
 import java.util.List;
- 
-import com.websystique.springmvc.model.Employee;
- 
+
+import com.suren.springmvc.model.Employee;
+
 public interface EmployeeDao {
  
     Employee findById(int id);
@@ -15,5 +15,7 @@ public interface EmployeeDao {
     List<Employee> findAllEmployees();
  
     Employee findEmployeeBySsn(String ssn);
+
+    Employee updateEmployee(Employee employee) throws Exception ;
  
 }

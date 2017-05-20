@@ -1,17 +1,19 @@
-package com.websystique.springmvc.dao;
+package com.suren.springmvc.dao;
  
 import java.util.List;
- 
+
+import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
  
-import com.websystique.springmvc.model.Employee;
+import com.suren.springmvc.model.Employee;
  
 @Repository("employeeDao")
 public class EmployeeDaoImpl extends AbstractDao<Integer, Employee> implements EmployeeDao {
- 
+    public static final Logger logger = Logger.getLogger(EmployeeDaoImpl.class);
+
     public Employee findById(int id) {
         return getByKey(id);
     }
@@ -36,5 +38,9 @@ public class EmployeeDaoImpl extends AbstractDao<Integer, Employee> implements E
         Criteria criteria = createEntityCriteria();
         criteria.add(Restrictions.eq("ssn", ssn));
         return (Employee) criteria.uniqueResult();
+    }
+
+    public Employee updateEmployee(Employee employee)throws Exception {
+      return (Employee) merge(employee);
     }
 }

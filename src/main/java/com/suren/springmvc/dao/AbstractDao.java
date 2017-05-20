@@ -1,4 +1,4 @@
-package com.websystique.springmvc.dao;
+package com.suren.springmvc.dao;
  
 import java.io.Serializable;
  
@@ -36,6 +36,10 @@ public abstract class AbstractDao<PK extends Serializable, T> {
  
     public void delete(T entity) {
         getSession().delete(entity);
+    }
+
+    public Object merge(T entity) throws Exception {
+        return getSession().merge(entity);
     }
      
     protected Criteria createEntityCriteria(){

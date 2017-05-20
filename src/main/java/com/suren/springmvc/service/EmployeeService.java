@@ -1,8 +1,8 @@
-package com.websystique.springmvc.service;
+package com.suren.springmvc.service;
  
 import java.util.List;
  
-import com.websystique.springmvc.model.Employee;
+import com.suren.springmvc.model.Employee;
  
 public interface EmployeeService {
  
@@ -10,7 +10,7 @@ public interface EmployeeService {
      
     void saveEmployee(Employee employee);
      
-    void updateEmployee(Employee employee);
+    void updateEmployee(Employee employee) throws Exception ;
      
     void deleteEmployeeBySsn(String ssn);
  
