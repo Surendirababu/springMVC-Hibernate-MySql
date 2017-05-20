@@ -20,7 +20,7 @@
     <h2>List of Employees</h2>
     <table>
         <tr>
-            <td>NAME</td><td>Joining Date</td><td>Salary</td><td>SSN</td><td></td>
+            <td>NAME</td><td>Joining Date</td><td><a href="<c:url value='/sortEmployeeSalary' />">Salary</td><td>SSN</td><td></td>
         </tr>
         <c:forEach items="${employees}" var="employee">
             <tr>

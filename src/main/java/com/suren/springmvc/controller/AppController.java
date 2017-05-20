@@ -42,6 +42,38 @@ public class AppController {
         return "allemployees";
     }
 
+    @RequestMapping(value = {"/sortEmployeeSalary"}, method = RequestMethod.GET)
+    public String sortEmployeeBySalary(ModelMap model) {
+
+        List<Employee> employees = service.findAllEmployees();
+        if (logger.isDebugEnabled()) {
+
+            logger.debug("Printing Employee salary before sorting ");
+        }
+        for (Employee emp : employees) {
+
+            if (logger.isDebugEnabled()) {
+
+                logger.debug(emp.getSalary());
+            }
+        }
+        employees.sort((emp1, emp2) -> emp1.getSalary().compareTo(emp2.getSalary()));
+
+        if (logger.isDebugEnabled()) {
+
+            logger.debug("Printing Employee salary after sorting ");
+        }
+        for (Employee emp : employees) {
+
+            if (logger.isDebugEnabled()) {
+
+                logger.debug(emp.getSalary());
+            }
+        }
+        model.addAttribute("employees", employees);
+        return "allemployees";
+    }
+
     /*
      * This method will provide the medium to add a new employee.
      */
