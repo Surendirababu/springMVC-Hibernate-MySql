@@ -33,15 +33,9 @@ public class EmployeeServiceImpl implements EmployeeService {
      * It will be updated in db once transaction ends. 
      */
     public void updateEmployee(Employee employee) throws Exception {
-        if(logger.isDebugEnabled()){
-            logger.debug("Emplpoyee Obj Before Update" + employee.toString());
-        }
 
         dao.updateEmployee(employee);
 
-        if(logger.isDebugEnabled()){
-            logger.debug("Emplpoyee Obj After Update" + employee.toString());
-        }
     }
 
     public void deleteEmployeeBySsn(String ssn) {
