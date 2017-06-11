@@ -24,6 +24,8 @@ import com.suren.springmvc.model.Employee;
 @RequestMapping("/")
 public class AppController {
 
+    //Test url:http://localhost:8080/SpringMVCHibernateCRUD/
+
     public static final Logger logger = Logger.getLogger(AppController.class);
     @Autowired
     EmployeeService service;
@@ -33,6 +35,8 @@ public class AppController {
 
     /*
      * This method will list all existing employees.
+     *
+     *
      */
     @RequestMapping(value = {"/", "/list"}, method = RequestMethod.GET)
     public String listEmployees(ModelMap model) {

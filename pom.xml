@@ -106,6 +106,13 @@
             <version>${mysql.connector.version}</version>
         </dependency>
 
+        <!--PostGress-->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.4.1207.jre7</version>
+        </dependency>
+
         <!-- Joda-Time -->
         <dependency>
             <groupId>joda-time</groupId>
